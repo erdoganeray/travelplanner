@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 import sys
 import warnings
+import logging
+
+# Disable OpenTelemetry warnings
+logging.getLogger('opentelemetry').setLevel(logging.ERROR)
 
 from travelplanner.crew import MyProject
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 warnings.filterwarnings("ignore", message=".*TracerProvider.*")
+warnings.filterwarnings("ignore", message="Overriding of current TracerProvider is not allowed")
 
 # This main file is intended to be a way for you to run your
 # crew locally, so refrain from adding unnecessary logic into this file.

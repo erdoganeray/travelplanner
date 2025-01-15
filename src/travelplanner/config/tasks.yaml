@@ -18,7 +18,9 @@ reporting_task:
 
 chat_task:
   description: >
-    Analyze the {input} produces an appropriate response
+    Analyze the {input} and create an appropriate response.
+    Consider the context, language, and intent of the input to provide
+    a helpful and engaging travel-related response.
   expected_output: >
-    a response to input
+    A well-crafted response that is informative, engaging, and perfectly tailored to the user's needs
   agent: chat_agent
