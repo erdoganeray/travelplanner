@@ -13,16 +13,16 @@ class MyProject:
 	researcher_tools = [DuckDuckGoSearchTool()]
 
 	@agent
-	def chat_agent(self) -> Agent:
+	def memory_agent(self) -> Agent:
 		return Agent(
-			config=self.agents_config['chat_agent'],
+			config=self.agents_config['memory_agent'],
 			verbose=True,
 		)
-
+	
 	@task
-	def chat_task(self) -> Task:
+	def memory_task(self) -> Task:
 		return Task(
-			config=self.tasks_config['chat_task'],
+			config=self.tasks_config['memory_task'],
 			verbose=True,
 		)
 

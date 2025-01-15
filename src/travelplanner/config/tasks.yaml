@@ -5,7 +5,7 @@ research_task:
     the current year is 2025.
   expected_output: >
     A list with 10 bullet points of the most relevant information about {topic}
-  agent: chat_agent
+  agent: memory_agent
 
 reporting_task:
   description: >
@@ -14,7 +14,7 @@ reporting_task:
   expected_output: >
     A fully fledged report with the main topics, each with a full section of information.
     Formatted as markdown without '```'
-  agent: chat_agent
+  agent: memory_agent
 
 chat_task:
   description: >
@@ -24,3 +24,17 @@ chat_task:
   expected_output: >
     A well-crafted response that is informative, engaging, and perfectly tailored to the user's needs
   agent: chat_agent
+
+memory_task:
+  description: >
+    The agent will analyze user inputs to extract travel-related information such as destination,
+    duration, transportation preferences, accommodation preferences, activities, and places to visit. 
+    It will structure the extracted details in JSON format.
+  expected_output: >
+    A structured JSON file, such as: {"destination": "<destination>","duration_days": <duration_days>,
+    "transportation": "<transportation>","accommodation": "<accommodation>","activities": ["<activity1>",
+    "<activity2>"]}
+    duration_days musnt be an number, it can be next weekend, next summer etc.
+    You dont have to add every detail, only the ones that are explicitly mentioned.
+    You dont suggest anything.
+  agent: memory_agent
