@@ -1,0 +1,23 @@
+[project]
+name = "travelplanner"
+version = "0.1.0"
+description = "TravelPlanner using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.95.0,<1.0.0"
+]
+
+[project.scripts]
+travelplanner = "travelplanner.main:run"
+run_crew = "travelplanner.main:run"
+train = "travelplanner.main:train"
+replay = "travelplanner.main:replay"
+test = "travelplanner.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
