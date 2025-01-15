@@ -18,9 +18,12 @@ reporting_task:
 
 chat_task:
   description: >
-    Analyze the {input} and create an appropriate response.
-    Consider the context, language, and intent of the input to provide
-    a helpful and engaging travel-related response.
+    Use the conversation history to build your response to the user:
+
+    {history}
+
+    Respond to the user's message: {user_message}",
   expected_output: >
-    A well-crafted response that is informative, engaging, and perfectly tailored to the user's needs
+    Your output should be a relevant, accurate, and engaging response that
+    directly addresses the user's query or continues the conversation logically.
   agent: chat_agent

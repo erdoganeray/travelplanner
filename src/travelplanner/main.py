@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 import sys
 import warnings
+
+from travelplanner.crew import MyProject
+from mem0 import MemoryClient
+
+client = MemoryClient()
+
 import logging
 
 # Disable OpenTelemetry warnings
@@ -22,6 +28,8 @@ def run():
     Run the crew in an interactive chat loop.
     The loop continues until the user types 'exit' or 'quit'.
     """
+    history = []
+    
     print("Welcome to the chat! Type 'exit' or 'quit' to end the conversation.")
     
     while True:
@@ -33,11 +41,21 @@ def run():
             
         if not user_input:  # Skip empty inputs
             continue
+
+        chat_history = "\n".join(history)
             
         inputs = {
-            'input': user_input
+            'user_message': user_input,
+            'history': chat_history,
+            'topic': user_input  # Adding this for the research task
         }
-        MyProject().crew().kickoff(inputs=inputs)
+        response = MyProject().crew().kickoff(inputs=inputs)
+
+        history.append(f"User: {user_input}")
+        history.append(f"Assistant: {response}")
+        client.add(user_input, user_id="User")
+
+        print(f"Assistant: {response}")
 
 
 def train():

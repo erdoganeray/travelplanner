@@ -2,6 +2,11 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from travelplanner.tools.duckduckgo_tool import DuckDuckGoSearchTool
 
+memory_config = {
+    "provider": "mem0",
+    "config": {"user_id": "User"},
+}
+
 @CrewBase
 class MyProject:
 	"""MyProject crew"""
@@ -16,6 +21,8 @@ class MyProject:
 	def chat_agent(self) -> Agent:
 		return Agent(
 			config=self.agents_config['chat_agent'],
+			memory=True,
+			memory_config=memory_config,
 			verbose=True,
 		)
 
